@@ -54,5 +54,4 @@ const AddTechModal = () => {
     </div>
   );
 };
-
 export default AddTechModal;

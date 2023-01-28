@@ -20,7 +20,7 @@ const Logitem = ({ log }) => {
           <Moment>{log.date}</Moment>
         </span>
         <a href="#!" className="secondary-content">
-          <i class="material-icons grey-text">delete</i>
+          <i className="material-icons grey-text">delete</i>
         </a>
       </div>
     </li>

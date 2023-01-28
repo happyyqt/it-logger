@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import Logitem from "./Logitem";
 import PreLoader from "../layout/PreLoader";
+import PropTypes from "prop-types";
+import { getLogs } from "../../actions/logActions";
 
-const Logs = () => {
-  const [logs, setLogs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+const Logs = ({ log, getLogs }) => {
+  const { logs, loading } = log;
   useEffect(() => {
     getLogs();
   }, []);
 
-  const getLogs = () => {
-    setLoading(true);
-    fetch("/logs")
-      .then((response) => response.json())
-      .then((data) => setLogs(data));
-    setLoading(false);
-  };
-  if (loading) {
+  if (loading || logs === null) {
     return <PreLoader />;
   }
   return (
@@ -25,13 +19,19 @@ const Logs = () => {
       <li className="collection-header">
         <h4>Logs</h4>
       </li>
-      {loading || logs.length !== 0 ? (
-        logs.map((log) => <Logitem log={log} key={log.id} />)
-      ) : (
+      {!loading && logs.length === 0 ? (
         <p> No Logs...</p>
+      ) : (
+        logs.map((log) => <Logitem log={log} key={log.id} />)
       )}
     </ul>
   );
 };
-
-export default Logs;
+Logs.propTypes = {
+  log: PropTypes.object.isRequired,
+  getLogs: PropTypes.func.isRequired,
+};
+const mapStateToProps = (state) => ({
+  log: state.log,
+});
+export default connect(mapStateToProps, { getLogs })(Logs);

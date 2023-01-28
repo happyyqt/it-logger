@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import M from "materialize-css/dist/js/materialize.min.js";
-const AddLogModal = () => {
+import { connect } from "react-redux";
+import { addLog } from "../../actions/logActions";
+import PropTypes from "prop-types";
+
+const AddLogModal = ({ addLog }) => {
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(true);
   const [tech, setTech] = useState("");
@@ -11,6 +15,17 @@ const AddLogModal = () => {
     } else {
       console.log(message, attention, tech);
       //clear fields
+      // generate time and id
+      const newLog = {
+        message: message,
+        attention: attention,
+        tech: tech,
+        date: new Date(),
+      };
+
+      addLog(newLog);
+      M.toast({ html: `Log added by {tech}` });
+      // clear states
       setMessage("");
       setAttention(false);
       setTech("");
@@ -46,9 +61,9 @@ const AddLogModal = () => {
               <option value="" disabled selected>
                 Choose your option
               </option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+              <option value="tech1">tech1</option>
+              <option value="tech2">tech2</option>
+              <option value="tech3">tech3</option>
             </select>
             <label>Materialize Select</label>
           </div>
@@ -84,9 +99,9 @@ const AddLogModal = () => {
   );
 };
 
-const modalStyle = {
-  width: "75%",
-  height: "75%",
+AddLogModal.propTypes = {
+  addLog: PropTypes.func.isRequired,
 };
 
-export default AddLogModal;
+// call null for mapstateTopProps
+export default connect(null, { addLog })(AddLogModal);
