@@ -1,16 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import M from "materialize-css/dist/js/materialize.min.js";
-const EditLogModal = () => {
+import { connect } from "react-redux";
+import { clearCurrent, updateLog } from "../../actions/logActions";
+import PropTypes from "prop-types";
+
+const EditLogModal = ({ log, clearCurrent, updateLog }) => {
+  const { current } = log;
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(true);
   const [tech, setTech] = useState("");
+
+  useEffect(() => {
+    if (current) {
+      setMessage(current.message);
+      setAttention(current.attention);
+      setTech(current.tech);
+    }
+  }, [current]);
 
   const onSubmit = () => {
     if (message === "" || tech === "") {
       M.toast({ html: "Please enter a message and tech" });
     } else {
-      console.log(message, attention, tech);
+      const updatedLog = {
+        message: message,
+        attention: attention,
+        tech: tech,
+        date: new Date(),
+        id: current.id,
+      };
+      updateLog(updatedLog);
       //clear fields
+      clearCurrent();
       setMessage("");
       setAttention(false);
       setTech("");
@@ -27,13 +48,12 @@ const EditLogModal = () => {
         <div className="row">
           <div className="input-field col s12">
             <input
-              placeholder="Placeholder"
+              // placeholder="Placeholder"
               id="tech_logs"
               type="text"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
-            <label htmlFor="tech_logs">Tech Logs</label>
           </div>
         </div>
         <div className="row">
@@ -41,16 +61,16 @@ const EditLogModal = () => {
             <select
               name="tech"
               value={tech}
+              className="browser-default"
               onChange={(e) => setTech(e.target.value)}
             >
-              <option value="" disabled selected>
+              <option value="" disabled>
                 Choose your option
               </option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+              <option value="tech1">tech1</option>
+              <option value="tech2">tech2</option>
+              <option value="tech3">tech3</option>
             </select>
-            <label>Materialize Select</label>
           </div>
         </div>
         <div className="row">
@@ -84,4 +104,14 @@ const EditLogModal = () => {
   );
 };
 
-export default EditLogModal;
+EditLogModal.propTypes = {
+  log: PropTypes.object.isRequired,
+  clearCurrent: PropTypes.func.isRequired,
+  updateLog: PropTypes.func.isRequired,
+};
+const mapStateToProps = (state) => ({
+  log: state.log,
+});
+export default connect(mapStateToProps, { clearCurrent, updateLog })(
+  EditLogModal
+);
