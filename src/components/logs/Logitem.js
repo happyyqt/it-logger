@@ -6,7 +6,6 @@ import { deleteLog, setCurrent } from "../../actions/logActions";
 const Logitem = ({ log, deleteLog, setCurrent }) => {
   const onDelete = () => {
     deleteLog(log.id);
-    console.log("AAA");
   };
   return (
     <li>

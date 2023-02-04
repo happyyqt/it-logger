@@ -2,12 +2,19 @@ import React, { useState, useEffect } from "react";
 import M from "materialize-css/dist/js/materialize.min.js";
 import { connect } from "react-redux";
 import { addLog } from "../../actions/logActions";
+// import TechSelectOptions from "../techs/TechSelectOptions";
+import TechOptions from "../techs/TechOptions";
 import PropTypes from "prop-types";
 
-const AddLogModal = ({ addLog }) => {
+const AddLogModal = ({ techs, addLog }) => {
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(true);
   const [tech, setTech] = useState("");
+
+  // useEffect(() => {
+  //   getTechs();
+  //   console.log(techs);
+  // }, []);
 
   const onSubmit = () => {
     if (message === "" || tech === "") {
@@ -56,16 +63,18 @@ const AddLogModal = ({ addLog }) => {
             <select
               name="tech"
               value={tech}
+              className="browser-default"
               onChange={(e) => setTech(e.target.value)}
             >
-              <option value="" disabled selected>
+              <option value="" disabled>
                 Choose your option
               </option>
-              <option value="tech1">tech1</option>
+              {/* <TechSelectOptions /> */}
+              <TechOptions techs={techs} />
+              {/* <option value="tech1">tech1</option>
               <option value="tech2">tech2</option>
-              <option value="tech3">tech3</option>
+              <option value="tech3">tech3</option> */}
             </select>
-            <label>Materialize Select</label>
           </div>
         </div>
         <div className="row">
@@ -103,5 +112,9 @@ AddLogModal.propTypes = {
   addLog: PropTypes.func.isRequired,
 };
 
+const mapStateToProp = (state) => ({
+  techs: state.tech.techs,
+});
+
 // call null for mapstateTopProps
-export default connect(null, { addLog })(AddLogModal);
+export default connect(mapStateToProp, { addLog })(AddLogModal);

@@ -3,23 +3,37 @@
     {
       "message": "Fixed hard drive on workstation 003",
       "attention": true,
-      "tech": "tech2",
-      "date": "2023-02-02T02:45:10.806Z",
+      "tech": "Sam Smith",
+      "date": "2023-02-03T23:02:27.496Z",
       "id": 2
     },
     {
       "message": "tech des11111111111",
       "attention": true,
-      "tech": "tech1",
-      "date": "2023-02-02T02:44:11.966Z",
+      "tech": "Sam Smith",
+      "date": "2023-02-04T00:27:25.917Z",
       "id": 3
     },
     {
       "message": "abcde",
       "attention": true,
-      "tech": "tech2",
-      "date": "2023-02-02T04:07:08.176Z",
+      "tech": "Sara1 Wilson",
+      "date": "2023-02-04T00:29:19.924Z",
       "id": 4
+    },
+    {
+      "message": "tech des1111",
+      "attention": true,
+      "tech": "John Doe",
+      "date": "2023-02-03T23:03:11.030Z",
+      "id": 5
+    },
+    {
+      "message": "tech des2222",
+      "attention": true,
+      "tech": "John Doe",
+      "date": "2023-02-04T00:34:56.492Z",
+      "id": 6
     }
   ],
   "techs": [
@@ -35,7 +49,7 @@
     },
     {
       "id": 3,
-      "firstName": "Sara",
+      "firstName": "Sara1",
       "lastName": "Wilson"
     }
   ]
