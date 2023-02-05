@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import { getLogs } from "../../actions/logActions";
 
 const Logs = ({ log, getLogs }) => {
+  // deconstruture object
   const { logs, loading } = log;
   useEffect(() => {
     getLogs();
@@ -22,6 +23,7 @@ const Logs = ({ log, getLogs }) => {
       {!loading && logs.length === 0 ? (
         <p> No Logs...</p>
       ) : (
+        // warning: each child in a list should hae a unique key prop
         logs.map((log) => <Logitem log={log} key={log.id} />)
       )}
     </ul>

@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 const SearchBar = ({ searchLogs }) => {
   const text = useRef("");
   const onChange = () => {
+    console.log(text.current);
     searchLogs(text.current.value);
   };
   return (

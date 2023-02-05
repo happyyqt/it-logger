@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import M from "materialize-css/dist/js/materialize.min.js";
 import { connect } from "react-redux";
 import { addLog } from "../../actions/logActions";
-// import TechSelectOptions from "../techs/TechSelectOptions";
 import TechOptions from "../techs/TechOptions";
 import PropTypes from "prop-types";
 
@@ -11,17 +10,12 @@ const AddLogModal = ({ techs, addLog }) => {
   const [attention, setAttention] = useState(true);
   const [tech, setTech] = useState("");
 
-  // useEffect(() => {
-  //   getTechs();
-  //   console.log(techs);
-  // }, []);
-
   const onSubmit = () => {
     if (message === "" || tech === "") {
       M.toast({ html: "Please enter a message and tech" });
     } else {
       console.log(message, attention, tech);
-      //clear fields
+      // clear fields
       // generate time and id
       const newLog = {
         message: message,
@@ -67,13 +61,9 @@ const AddLogModal = ({ techs, addLog }) => {
               onChange={(e) => setTech(e.target.value)}
             >
               <option value="" disabled>
-                Choose your option
+                Please Choose Technician
               </option>
-              {/* <TechSelectOptions /> */}
               <TechOptions techs={techs} />
-              {/* <option value="tech1">tech1</option>
-              <option value="tech2">tech2</option>
-              <option value="tech3">tech3</option> */}
             </select>
           </div>
         </div>
@@ -111,10 +101,10 @@ const AddLogModal = ({ techs, addLog }) => {
 AddLogModal.propTypes = {
   addLog: PropTypes.func.isRequired,
 };
-
+// state.log / state.tech should be consistent to "log: logReducer, tech: techReducer" in reducers/index.js,
 const mapStateToProp = (state) => ({
   techs: state.tech.techs,
 });
-
-// call null for mapstateTopProps
+// state variables are all put in mapStateToProp object, actions are put in a brasket.
+// Both state variables and actions are treated as props of function AddLogModal so we use ({}) at the beginning
 export default connect(mapStateToProp, { addLog })(AddLogModal);

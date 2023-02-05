@@ -12,6 +12,8 @@ const Logitem = ({ log, deleteLog, setCurrent }) => {
       <div>
         <a
           href="#edit-log-modal"
+          // onClick function format: onClick = {() => }
+          // setCurrent when in edit mode.
           onClick={() => setCurrent(log)}
           className={`modal-trigger ${
             log.attention ? "red-text" : "blue-text"
@@ -38,9 +40,5 @@ Logitem.propTypes = {
   deleteLog: PropTypes.func.isRequired,
   setCurrent: PropTypes.func.isRequired,
 };
-
-// const mapStateToProps = (state) => ({
-//   log: state.log,
-// });
 
 export default connect(null, { deleteLog, setCurrent })(Logitem);

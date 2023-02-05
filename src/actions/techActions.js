@@ -61,7 +61,7 @@ export const addTech = (tech) => async (dispatch) => {
     });
   }
 };
-
+// delete only needs to put method as requestOptions; don't need 'const response = await fetch .....'
 export const deleteTech = (id) => async (dispatch) => {
   try {
     setLoading();

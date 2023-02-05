@@ -1,39 +1,25 @@
 {
   "logs": [
     {
-      "message": "Fixed hard drive on workstation 003",
+      "message": "Techlog1",
       "attention": true,
-      "tech": "Sam Smith",
-      "date": "2023-02-03T23:02:27.496Z",
+      "tech": "John Doe",
+      "date": "2023-02-05T01:50:17.890Z",
+      "id": 1
+    },
+    {
+      "message": "Techlog2",
+      "attention": false,
+      "tech": "Qingtian Yu",
+      "date": "2023-02-05T01:52:44.736Z",
       "id": 2
     },
     {
-      "message": "tech des11111111111",
+      "message": "Urgent Fix of port 001",
       "attention": true,
-      "tech": "Sam Smith",
-      "date": "2023-02-04T00:27:25.917Z",
+      "tech": "John Doe",
+      "date": "2023-02-05T01:53:35.945Z",
       "id": 3
-    },
-    {
-      "message": "abcde",
-      "attention": true,
-      "tech": "Sara1 Wilson",
-      "date": "2023-02-04T00:29:19.924Z",
-      "id": 4
-    },
-    {
-      "message": "tech des1111",
-      "attention": true,
-      "tech": "John Doe",
-      "date": "2023-02-03T23:03:11.030Z",
-      "id": 5
-    },
-    {
-      "message": "tech des2222",
-      "attention": true,
-      "tech": "John Doe",
-      "date": "2023-02-04T00:34:56.492Z",
-      "id": 6
     }
   ],
   "techs": [
@@ -48,9 +34,9 @@
       "lastName": "Smith"
     },
     {
-      "id": 3,
-      "firstName": "Sara1",
-      "lastName": "Wilson"
+      "firstName": "Qingtian",
+      "lastName": "Yu",
+      "id": 3
     }
   ]
 }

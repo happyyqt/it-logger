@@ -10,7 +10,7 @@ const EditLogModal = ({ log, clearCurrent, updateLog }) => {
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(true);
   const [tech, setTech] = useState("");
-
+  // fill all the fields with current log;
   useEffect(() => {
     if (current) {
       setMessage(current.message);
@@ -49,7 +49,6 @@ const EditLogModal = ({ log, clearCurrent, updateLog }) => {
         <div className="row">
           <div className="input-field col s12">
             <input
-              // placeholder="Placeholder"
               id="tech_logs"
               type="text"
               value={message}
@@ -66,12 +65,9 @@ const EditLogModal = ({ log, clearCurrent, updateLog }) => {
               onChange={(e) => setTech(e.target.value)}
             >
               <option value="" disabled>
-                Choose your option
+                Please Choose Technician
               </option>
               <TechSelectOptions />
-              {/* <option value="tech1">tech1</option>
-              <option value="tech2">tech2</option>
-              <option value="tech3">tech3</option> */}
             </select>
           </div>
         </div>
@@ -111,6 +107,7 @@ EditLogModal.propTypes = {
   clearCurrent: PropTypes.func.isRequired,
   updateLog: PropTypes.func.isRequired,
 };
+
 const mapStateToProps = (state) => ({
   log: state.log,
 });
