@@ -1,6 +1,6 @@
 # IT-Logger
 
-This is a React Application for tracking IT department logs and managing technicians. It uses JSON-Server as a mock backend. In the frontend, I applied [Materialize CSS framework](https://materializecss.com/) for UI and utilized **Redux** to manage the app's state.
+This is a React Application for tracking IT department logs and managing technicians. It uses JSON-Server as a mock backend. In the frontend, I applied [Materialize CSS framework](https://materializecss.com/) for UI and utilized **Redux** to manage the app's state. **Redux-thunk** was adopted to communicate with the backend asynchronously.
 
 ## Usage
 
