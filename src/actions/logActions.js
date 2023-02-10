@@ -12,7 +12,7 @@ import {
 
 export const getLogs = () => async (dispatch) => {
   try {
-    setLoading();
+    dispatch(setLoading());
     const res = await fetch("/logs");
     const data = await res.json();
     dispatch({
@@ -116,6 +116,7 @@ export const clearCurrent = () => {
   };
 };
 export const setLoading = () => {
+  console.log("loading");
   return {
     type: SET_LOADING,
   };
